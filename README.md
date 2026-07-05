@@ -12,4 +12,4 @@
 
 ---
 
-### **LumenEX** is a product of **[AsterIDE](https://asteride.dev)**.
+**LumenEX** is a product of **[AsterIDE](https://asteride.dev)**.
