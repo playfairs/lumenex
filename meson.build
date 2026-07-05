@@ -17,6 +17,16 @@ sources = [
   'src/lexer.c',
   'src/token.c',
   'src/languages/c/lexer.c',
+  'src/languages/cpp/lexer.c',
+  'src/languages/rust/lexer.c',
+  'src/languages/python/lexer.c',
+  'src/languages/javascript/lexer.c',
+  'src/languages/ada/lexer.c',
+  'src/languages/go/lexer.c',
+  'src/languages/java/lexer.c',
+  'src/languages/typescript/lexer.c',
+  'src/languages/cs/lexer.c',
+  'src/languages/zig/lexer.c',
 ]
 
 lumenex_lib = both_libraries(
@@ -45,3 +55,7 @@ pkg.generate(
   description: 'A production-quality C lexer library',
   subdirs: 'lumenex'
 )
+
+if get_option('tests')
+  subdir('tests')
+endif

@@ -5,7 +5,17 @@
 #include <string.h>
 
 #include "lumenex/token.h"
+#include "src/languages/ada/lexer.h"
 #include "src/languages/c/lexer.h"
+#include "src/languages/cpp/lexer.h"
+#include "src/languages/cs/lexer.h"
+#include "src/languages/go/lexer.h"
+#include "src/languages/java/lexer.h"
+#include "src/languages/javascript/lexer.h"
+#include "src/languages/python/lexer.h"
+#include "src/languages/rust/lexer.h"
+#include "src/languages/typescript/lexer.h"
+#include "src/languages/zig/lexer.h"
 
 static lumenex_lexer_options_t
 lumenex_default_options(lumenex_language_t language)
@@ -36,9 +46,65 @@ lumenex_lex_impl(const char *source,
                              options,
                              result);
     case LUMENEX_LANGUAGE_CPP:
+        return lumenex_cpp_lex(source,
+                               length,
+                               options,
+                               result);
     case LUMENEX_LANGUAGE_RUST:
+        return lumenex_rust_lex(source,
+                                length,
+                                options,
+                                result);
     case LUMENEX_LANGUAGE_PYTHON:
+        return lumenex_python_lex(source,
+                                  length,
+                                  options,
+                                  result);
     case LUMENEX_LANGUAGE_JAVASCRIPT:
+        return lumenex_javascript_lex(source,
+                                      length,
+                                      options,
+                                      result);
+    case LUMENEX_LANGUAGE_TYPESCRIPT:
+        return lumenex_typescript_lex(source,
+                                      length,
+                                      options,
+                                      result);
+    case LUMENEX_LANGUAGE_CS:
+        return lumenex_cs_lex(source,
+                              length,
+                              options,
+                              result);
+    case LUMENEX_LANGUAGE_GO:
+        return lumenex_go_lex(source,
+                              length,
+                              options,
+                              result);
+    case LUMENEX_LANGUAGE_ZIG:
+        return lumenex_zig_lex(source,
+                               length,
+                               options,
+                               result);
+    case LUMENEX_LANGUAGE_ADA:
+        return lumenex_ada_lex(source,
+                               length,
+                               options,
+                               result);
+    case LUMENEX_LANGUAGE_JAVA:
+        return lumenex_java_lex(source,
+                                length,
+                                options,
+                                result);
+    case LUMENEX_LANGUAGE_KOTLIN:
+    case LUMENEX_LANGUAGE_LUA:
+    case LUMENEX_LANGUAGE_SWIFT:
+    case LUMENEX_LANGUAGE_DART:
+    case LUMENEX_LANGUAGE_GLSL:
+    case LUMENEX_LANGUAGE_HASKELL:
+        return lumenex_javascript_lex(source,
+                                      length,
+                                      options,
+                                      result);
     default:
         result->had_error = 1;
         result->error_message = "unsupported language";
