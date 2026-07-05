@@ -1,6 +1,10 @@
 # Prerequisites
 *.d
 
+# Build artifacts
+build/
+builddir/
+
 # Object files
 *.o
 *.ko
